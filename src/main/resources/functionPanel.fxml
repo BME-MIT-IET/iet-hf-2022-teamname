@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.FunctionPanel" prefHeight="300" prefWidth="400.0">
+    <left>
+        <TitledPane collapsible="false" text="Változók" prefWidth="200">
+            <BorderPane.margin>
+                <Insets bottom="10" top="10" left="10" right="10"/>
+            </BorderPane.margin>
+            <VBox spacing="10">
+                <VBox.margin>
+                    <Insets bottom="10" top="10" left="10" right="10"/>
+                </VBox.margin>
+                <BorderPane>
+                    <center>
+                        <TextField fx:id="varInput"/>
+                    </center>
+                     <right>
+                         <Button text="add" fx:id="addVarButton" onAction="#addVar"/>
+                     </right>
+                </BorderPane>
+            <ListView fx:id="varList"/>
+            </VBox>
+        </TitledPane>
+    </left>
+    <center>
+        <VBox>
+
+                 <TitledPane collapsible="false" text="Parancsok">
+                     <VBox.margin>
+                         <Insets top="10" bottom="10" left="10" right="10"/>
+                     </VBox.margin>
+                     <VBox spacing="10">
+                         <BorderPane >
+                             <center>
+                                 <TextField fx:id="nameInput"/>
+                             </center>
+                             <left>
+                                 <Label text="Name:" BorderPane.alignment="CENTER">
+                                     <BorderPane.margin>
+                                         <Insets right="10"/>
+                                     </BorderPane.margin>
+                                 </Label>
+                             </left>
+                         </BorderPane>
+                     <TextArea fx:id="commandsTextArea"/>
+                        <FlowPane alignment="BOTTOM_RIGHT">
+                            <Button fx:id="okButton" text="Save Function" onAction="#saveFunction"/>
+                        </FlowPane>
+
+                     </VBox>
+             </TitledPane>
+
+
+        </VBox>
+    </center>
+</BorderPane>

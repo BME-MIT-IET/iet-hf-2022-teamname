@@ -21,11 +21,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class FunctionList implements Initializable {
-	/**Az eljárásokat tartalmazó lista */
+	/**Az eljï¿½rï¿½sokat tartalmazï¿½ lista */
     public ListView<Function> functionList;
-    /**Az új eljárások felvételéért felelõs gomb. */
+    /**Az ï¿½j eljï¿½rï¿½sok felvï¿½telï¿½ï¿½rt felelï¿½s gomb. */
     public Button addNew;
-    /**A fálban lévõ eljárások felvételéért felelõs gomb. */
+    /**A fï¿½lban lï¿½vï¿½ eljï¿½rï¿½sok felvï¿½telï¿½ï¿½rt felelï¿½s gomb. */
     public Button importFunc;
 
     @Override
@@ -38,21 +38,21 @@ public class FunctionList implements Initializable {
 
     }
     /**
-     * Megnyit egy új ablakot ahol lehetõségün van egy új eljárás felvételére.
-     * @param actionEvent	A generáló event.
-     * @throws IOException	Amennyiben nem tudjuk megnyitni a kívánt fxml-t
+     * Megnyit egy ï¿½j ablakot ahol lehetï¿½sï¿½gï¿½n van egy ï¿½j eljï¿½rï¿½s felvï¿½telï¿½re.
+     * @param actionEvent	A generï¿½lï¿½ event.
+     * @throws IOException	Amennyiben nem tudjuk megnyitni a kï¿½vï¿½nt fxml-t
      */
     public void addNewFunc(ActionEvent actionEvent) throws IOException {
         Stage stage=new Stage();
-        FXMLLoader loader =new FXMLLoader(getClass().getResource("functionPanel.fxml"));
+        FXMLLoader loader =new FXMLLoader(getClass().getResource("/functionPanel.fxml"));
         Parent root = (Parent)loader.load();
         stage.setTitle("Magic Poloska");
         stage.setScene(new Scene(root, 600, 300));
-        stage.getIcons().add(new Image("images/premiumboi.png"));
+        stage.getIcons().add(new Image("/images/premiumboi.png"));
         stage.show();
     }
     /**
-     * Megnyit egy ablakot ahol lehetõségünk van kiválasztani egy .json fájlt amibõl beolvassuk a benne lévõ eljárásokat. 
+     * Megnyit egy ablakot ahol lehetï¿½sï¿½gï¿½nk van kivï¿½lasztani egy .json fï¿½jlt amibï¿½l beolvassuk a benne lï¿½vï¿½ eljï¿½rï¿½sokat. 
      * @param actionEvent
      * @throws IOException
      */
