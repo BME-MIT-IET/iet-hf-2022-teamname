@@ -122,12 +122,12 @@ public class PoloskaController implements Initializable {
      */
     public void openClicked(ActionEvent actionEvent) throws IOException{
         Stage newStage=new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/FunctionList.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FunctionList.fxml"));
         Parent root = loader.load();
         newStage.setTitle("Add Function");
         Scene scene=new Scene(root,300,500);
         newStage.setScene(scene);
-        newStage.getIcons().add(new Image("src/main/resources/images/premiumboi.png"));
+        newStage.getIcons().add(new Image("/images/premiumboi.png"));
         newStage.initModality(Modality.NONE);
         newStage.initOwner(drawingBoard.getScene().getWindow());
 

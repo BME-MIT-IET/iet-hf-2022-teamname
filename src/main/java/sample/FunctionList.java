@@ -44,11 +44,11 @@ public class FunctionList implements Initializable {
      */
     public void addNewFunc(ActionEvent actionEvent) throws IOException {
         Stage stage=new Stage();
-        FXMLLoader loader =new FXMLLoader(getClass().getResource("../../resources/functionPanel.fxml"));
+        FXMLLoader loader =new FXMLLoader(getClass().getResource("/functionPanel.fxml"));
         Parent root = (Parent)loader.load();
         stage.setTitle("Magic Poloska");
         stage.setScene(new Scene(root, 600, 300));
-        stage.getIcons().add(new Image("src/main/resources/images/premiumboi.png"));
+        stage.getIcons().add(new Image("/images/premiumboi.png"));
         stage.show();
     }
     /**
