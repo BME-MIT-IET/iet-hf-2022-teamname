@@ -12,5 +12,5 @@ ezenkívűl látható a bemenet, kimenet, és az eljárásokat kezelő menü.
 - Build keretrendszer beüzemelése Mavennel + Github Actions CI beüzemelése
 - Manuális kód átvizsgálás elvégzése az alkalmazás egy részére + Statikus analízis eszköz futtatása(SonarCloud),a jelzett hibák átnézése és a komolyabb hibák javítása
 ### Termék/felhasználó fókusz
-- BDD tesztek készítése (JBehave)
+- BDD tesztek készítése (Cucumber)
 - Manuális tesztek megtervezése, végrehajtása és dokumentálása
