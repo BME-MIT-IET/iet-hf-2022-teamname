@@ -12,10 +12,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
         primaryStage.setTitle("Magic Poloska");
         primaryStage.setScene(new Scene(root, 1200, 800));
-        primaryStage.getIcons().add(new Image("images/premiumboi.png"));
+        primaryStage.getIcons().add(new Image("/images/premiumboi.png"));
         primaryStage.show();
     }
 

@@ -36,22 +36,22 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class PoloskaController implements Initializable {
-	/**Az utasítások bemeneti mezõje */
+	/**Az utasï¿½tï¿½sok bemeneti mezï¿½je */
     public TextField cmdInput;
-    /**Az utasítások kimeneti mezõje */
+    /**Az utasï¿½tï¿½sok kimeneti mezï¿½je */
     public TextArea cmdOutput;
-    /**A rajzfelület, amire a poloska rajzol. */
+    /**A rajzfelï¿½let, amire a poloska rajzol. */
     public Canvas drawingBoard;
-    /**A tároló ami a Poloska képét és a rajztáblát egybe foglalja */
+    /**A tï¿½rolï¿½ ami a Poloska kï¿½pï¿½t ï¿½s a rajztï¿½blï¿½t egybe foglalja */
     public Pane content;
-    /**A poloska jelenlegi állapotát megjelenítõ kép*/
+    /**A poloska jelenlegi ï¿½llapotï¿½t megjelenï¿½tï¿½ kï¿½p*/
     public ImageView imagePoloska;
-    /**A poloska ami mint rajzoló eszköz funkcionál*/
+    /**A poloska ami mint rajzolï¿½ eszkï¿½z funkcionï¿½l*/
     private Poloska p;
     private int pos=-1;
-    /**Fájl választó ablak */
+    /**Fï¿½jl vï¿½lasztï¿½ ablak */
     private FileChooser fileChooser=new FileChooser();
-    /**Az elõzõ utasítás sorok listája, ezekre visszatudunk lépni. */
+    /**Az elï¿½zï¿½ utasï¿½tï¿½s sorok listï¿½ja, ezekre visszatudunk lï¿½pni. */
     List<String> prevCommands=new ArrayList<>();
 
     @Override
@@ -59,20 +59,20 @@ public class PoloskaController implements Initializable {
         drawingBoard.widthProperty().bind(content.widthProperty());
         drawingBoard.heightProperty().bind(content.heightProperty());
         p=new Poloska(600,300,drawingBoard);
-        imagePoloska.setImage(new Image("images/premiumboi4.png",24,24,true,false));
+        imagePoloska.setImage(new Image("/images/premiumboi4.png",24,24,true,false));
         imagePoloska.setVisible(false);
         cmdInput.setEditable(false);
         cmdOutput.setEditable(false);
     }
     /**
-     * A különbözõ billentyû bemenetek lereagálása.
+     * A kï¿½lï¿½nbï¿½zï¿½ billentyï¿½ bemenetek lereagï¿½lï¿½sa.
      * 
-     * Enter: A bemenetet átvezeti az adott fordító/szûrõ rétegeken. Elõször a Tokenizer Tokenekre bontja, aztán a Parser Command-oká alakítja õket.
-     * A kapott Commandokat pedig az execute() metódusok segítségével lefuttatjuk.
-     * A végén pedig a feldolgozott parancsot a kimenetre kiírjuk.
+     * Enter: A bemenetet ï¿½tvezeti az adott fordï¿½tï¿½/szï¿½rï¿½ rï¿½tegeken. Elï¿½szï¿½r a Tokenizer Tokenekre bontja, aztï¿½n a Parser Command-okï¿½ alakï¿½tja ï¿½ket.
+     * A kapott Commandokat pedig az execute() metï¿½dusok segï¿½tsï¿½gï¿½vel lefuttatjuk.
+     * A vï¿½gï¿½n pedig a feldolgozott parancsot a kimenetre kiï¿½rjuk.
      * 
-     * fel/le: A már lefutatott parancsok között tudunk válogatni.
-     * @param keyEvent A bejövõ billenytû lenyomás álltal genrált esemény.
+     * fel/le: A mï¿½r lefutatott parancsok kï¿½zï¿½tt tudunk vï¿½logatni.
+     * @param keyEvent A bejï¿½vï¿½ billenytï¿½ lenyomï¿½s ï¿½lltal genrï¿½lt esemï¿½ny.
      */
     public void InputKeyPressed(KeyEvent keyEvent) {
         if(keyEvent.getCode()== KeyCode.ENTER){
@@ -116,25 +116,25 @@ public class PoloskaController implements Initializable {
     }
 }
     /**
-     * Megynitja azt az ablakot ahol az eljárásokat menedzselhetjük.
-     * @param actionEvent	akció
-     * @throws IOException	ha nem sikerül betölteni az adott fxml fájlt.
+     * Megynitja azt az ablakot ahol az eljï¿½rï¿½sokat menedzselhetjï¿½k.
+     * @param actionEvent	akciï¿½
+     * @throws IOException	ha nem sikerï¿½l betï¿½lteni az adott fxml fï¿½jlt.
      */
     public void openClicked(ActionEvent actionEvent) throws IOException{
         Stage newStage=new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FunctionList.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/FunctionList.fxml"));
         Parent root = loader.load();
         newStage.setTitle("Add Function");
         Scene scene=new Scene(root,300,500);
         newStage.setScene(scene);
-        newStage.getIcons().add(new Image("images/premiumboi.png"));
+        newStage.getIcons().add(new Image("src/main/resources/images/premiumboi.png"));
         newStage.initModality(Modality.NONE);
         newStage.initOwner(drawingBoard.getScene().getWindow());
 
         newStage.show();
     }
     /**
-     * Megnyit egy fájlválasztó ablakot, ahol egy json fájlt tudunk elmenteni, ebbe az eljárások jelenlegi állapotukban kerülnek bele.
+     * Megnyit egy fï¿½jlvï¿½lasztï¿½ ablakot, ahol egy json fï¿½jlt tudunk elmenteni, ebbe az eljï¿½rï¿½sok jelenlegi ï¿½llapotukban kerï¿½lnek bele.
      * @param actionEvent
      * @throws IOException
      */
@@ -146,7 +146,7 @@ public class PoloskaController implements Initializable {
     }
 
     /**
-     * Elmenti a rajzfelületet egy .png képfájlba.
+     * Elmenti a rajzfelï¿½letet egy .png kï¿½pfï¿½jlba.
      * @param actionEvent
      */
     public void saveCanvas(ActionEvent actionEvent) {
@@ -162,19 +162,19 @@ public class PoloskaController implements Initializable {
         }
     }
     /**
-     * Egy felugró ablak megjelenik a programról néhány információval.
+     * Egy felugrï¿½ ablak megjelenik a programrï¿½l nï¿½hï¿½ny informï¿½ciï¿½val.
      * @param actionEvent
      */
     public void aboutClicked(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
         alert.setHeaderText("About this program");
-        alert.setContentText("Szûcs Ádám - Programozas alapjai 3 HF \"Magic Poloska\" \n(BME 2020)");
+        alert.setContentText("Szï¿½cs ï¿½dï¿½m - Programozas alapjai 3 HF \"Magic Poloska\" \n(BME 2020)");
 
         alert.showAndWait();
     }
     /**
-     * Egy új rajz készítését kezdi. A képet megjeleníti és elforgatja, a rajzfelületet alaphelyzetbe állítja.
+     * Egy ï¿½j rajz kï¿½szï¿½tï¿½sï¿½t kezdi. A kï¿½pet megjelenï¿½ti ï¿½s elforgatja, a rajzfelï¿½letet alaphelyzetbe ï¿½llï¿½tja.
      * @param actionEvent
      */
     public void newDrawing(ActionEvent actionEvent) {
@@ -184,8 +184,8 @@ public class PoloskaController implements Initializable {
         cmdInput.setEditable(true);
     }
     /**
-     * A poloskát tartalmazó képet hozzáigazítja a poloska valódi fordulásához.
-     * A forgás középpontját a kép középpontjára állítja.
+     * A poloskï¿½t tartalmazï¿½ kï¿½pet hozzï¿½igazï¿½tja a poloska valï¿½di fordulï¿½sï¿½hoz.
+     * A forgï¿½s kï¿½zï¿½ppontjï¿½t a kï¿½p kï¿½zï¿½ppontjï¿½ra ï¿½llï¿½tja.
      */
     private void rotateImage() {
         imagePoloska.getTransforms().clear();
@@ -196,7 +196,7 @@ public class PoloskaController implements Initializable {
         rotation.setPivotY(p.getY());
         imagePoloska.getTransforms().add(rotation);
     }
-    /**Bezáródik a program */
+    /**Bezï¿½rï¿½dik a program */
     public void exitClicked(ActionEvent actionEvent) {
         Platform.exit();
     }
