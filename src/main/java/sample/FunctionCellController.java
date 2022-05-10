@@ -21,25 +21,25 @@ import variables.FunctionStorage;
 import java.io.IOException;
 
 public class FunctionCellController extends ListCell<Function> {
-	/**Az eljárás nevét tartalmazó label. */
+	/**Az eljï¿½rï¿½s nevï¿½t tartalmazï¿½ label. */
     Label name=new Label();
-    /**Az eljárás paramétereit tartalmazó label. */
+    /**Az eljï¿½rï¿½s paramï¿½tereit tartalmazï¿½ label. */
     Label params=new Label();
-    /**A labeleket tartalmazó tároló. */
+    /**A labeleket tartalmazï¿½ tï¿½rolï¿½. */
     private VBox labels=new VBox(-6);
-    /**Az eljárás törlésére használt gomb. */
+    /**Az eljï¿½rï¿½s tï¿½rlï¿½sï¿½re hasznï¿½lt gomb. */
     Button btnDel=new Button("\uD83D\uDDD1");
-    /**Az eljárás szerkesztésére használt gomb. */
+    /**Az eljï¿½rï¿½s szerkesztï¿½sï¿½re hasznï¿½lt gomb. */
     Button btnEdit=new Button("\u270f");
-    /**A gyökér tároló */
+    /**A gyï¿½kï¿½r tï¿½rolï¿½ */
     private BorderPane root=new BorderPane();
-    /**A gombokat tartalmazó tároló. */
+    /**A gombokat tartalmazï¿½ tï¿½rolï¿½. */
     private HBox btns=new HBox(4);
     /**
-     * Beállítja az adott gomb paramétereit a kívántra.
+     * Beï¿½llï¿½tja az adott gomb paramï¿½tereit a kï¿½vï¿½ntra.
      * 
-     * @param btn	A gomb aminek állítjuk az értékeit.
-     * @param color	A szín amire átvált ha felette van a kurzor.
+     * @param btn	A gomb aminek ï¿½llï¿½tjuk az ï¿½rtï¿½keit.
+     * @param color	A szï¿½n amire ï¿½tvï¿½lt ha felette van a kurzor.
      */
     private void setUpButton(Button btn, String color){
         btn.setPadding(new Insets(0,0,0,0));
@@ -78,7 +78,7 @@ public class FunctionCellController extends ListCell<Function> {
             public void handle(ActionEvent actionEvent) {
                 try{
                     Stage stage=new Stage();
-                    FXMLLoader loader =new FXMLLoader(getClass().getResource("functionPanel.fxml"));
+                    FXMLLoader loader =new FXMLLoader(getClass().getResource("../../resources/functionPanel.fxml"));
                     Parent root = (Parent)loader.load();
                     FunctionPanel controller = loader.getController();
                     controller.nameInput.setText(getItem().name);
@@ -89,7 +89,7 @@ public class FunctionCellController extends ListCell<Function> {
                     controller.setEditMode(true);
                     stage.setTitle("Magic Poloska");
                     stage.setScene(new Scene(root, 600, 300));
-                    stage.getIcons().add(new Image("images/premiumboi.png"));
+                    stage.getIcons().add(new Image("src/main/resources/images/premiumboi.png"));
                     stage.show();
                 }catch(IOException e){
                     e.printStackTrace();
@@ -99,7 +99,7 @@ public class FunctionCellController extends ListCell<Function> {
         setPrefWidth(USE_PREF_SIZE);
     }
     /**
-     * Beállítja a labeleket az aktuális eljárás értékeire.
+     * Beï¿½llï¿½tja a labeleket az aktuï¿½lis eljï¿½rï¿½s ï¿½rtï¿½keire.
      */
     @Override
     protected void updateItem(Function function, boolean empty) {
