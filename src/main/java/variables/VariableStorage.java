@@ -28,22 +28,22 @@ class Func{
 public class VariableStorage {
     private static VariableStorage single_instance =null;
     /**
-     * A program változói tartalmazó Map, melyben String és Double értékpárokat tárolok, ahol a Sztring a változó neve a Double pedig a változó értéke.
+     * A program vï¿½ltozï¿½i tartalmazï¿½ Map, melyben String ï¿½s Double ï¿½rtï¿½kpï¿½rokat tï¿½rolok, ahol a Sztring a vï¿½ltozï¿½ neve a Double pedig a vï¿½ltozï¿½ ï¿½rtï¿½ke.
      */
     private Map<String,Double> variables=new HashMap<String,Double>();
     /**
-     * A változó azt a számot tárolja ami a követlezõ ciklus változónak a szám részét fogja kiadni.
+     * A vï¿½ltozï¿½ azt a szï¿½mot tï¿½rolja ami a kï¿½vetlezï¿½ ciklus vï¿½ltozï¿½nak a szï¿½m rï¿½szï¿½t fogja kiadni.
      */
     private int loopNumber=1;
     /**
-     * Számon tartja, hogy éppen melyik eljárásban vagyunk és azon belül hanyadik ciklusnál járunk. A ciklusváltozó helyes elnevezésénél fontos.
+     * Szï¿½mon tartja, hogy ï¿½ppen melyik eljï¿½rï¿½sban vagyunk ï¿½s azon belï¿½l hanyadik ciklusnï¿½l jï¿½runk. A ciklusvï¿½ltozï¿½ helyes elnevezï¿½sï¿½nï¿½l fontos.
      */
     private Stack<Func> funcs=new Stack<>();
     /**
-     * Azt jelöli, hogy a program az elérés pillanatában eljáráshoz tartozó utasítást hajt-e végre.
+     * Azt jelï¿½li, hogy a program az elï¿½rï¿½s pillanatï¿½ban eljï¿½rï¿½shoz tartozï¿½ utasï¿½tï¿½st hajt-e vï¿½gre.
      */
     /**
-     * Annak az eljárás neve amibe a végrehajtott utasítás szerepel. A ciklusváltozóknál szükséges.
+     * Annak az eljï¿½rï¿½s neve amibe a vï¿½grehajtott utasï¿½tï¿½s szerepel. A ciklusvï¿½ltozï¿½knï¿½l szï¿½ksï¿½ges.
      */
 
     private VariableStorage(){}
@@ -54,11 +54,11 @@ public class VariableStorage {
         }
         return single_instance;
     }
-    /**Hozzáad egy változót a Map-be.
+    /**Hozzï¿½ad egy vï¿½ltozï¿½t a Map-be.
      * 
-     * @param name A változó neve
-     * @param value	A változó értéke
-     * @param isLoop Loop változó-e?
+     * @param name A vï¿½ltozï¿½ neve
+     * @param value	A vï¿½ltozï¿½ ï¿½rtï¿½ke
+     * @param isLoop Loop vï¿½ltozï¿½-e?
      */
     public void addVariable(String name,Double value,boolean isLoop){
         variables.put(name,value);
@@ -71,17 +71,17 @@ public class VariableStorage {
         }
     }
     /**
-     *  Visszad a Map-bõl egy értéket a neve alapján.
-     * @param name A változó neve.
+     *  Visszad a Map-bï¿½l egy ï¿½rtï¿½ket a neve alapjï¿½n.
+     * @param name A vï¿½ltozï¿½ neve.
      * @return
      */
     public double getVariable(String name){
         return variables.get(name);
     }
     /**
-     * Eltávolít egy bejegyzést a Map-bõl név alapján.
-     * @param name A törlendõ változó neve.
-     * @param isLoop	A törlendõ változó ciklusváltozó-e.
+     * Eltï¿½volï¿½t egy bejegyzï¿½st a Map-bï¿½l nï¿½v alapjï¿½n.
+     * @param name A tï¿½rlendï¿½ vï¿½ltozï¿½ neve.
+     * @param isLoop	A tï¿½rlendï¿½ vï¿½ltozï¿½ ciklusvï¿½ltozï¿½-e.
      */
     public void removeVariable(String name,boolean isLoop){
         variables.remove(name);
@@ -103,8 +103,8 @@ public class VariableStorage {
 
     }
     /**
-     * Attól függõen, hogy eljárásban vagyunk-e ad egy változó nevet, ami még nem foglalt.
-     * @return A következõ ciklusnak adható szabad változó név.
+     * Attï¿½l fï¿½ggï¿½en, hogy eljï¿½rï¿½sban vagyunk-e ad egy vï¿½ltozï¿½ nevet, ami mï¿½g nem foglalt.
+     * @return A kï¿½vetkezï¿½ ciklusnak adhatï¿½ szabad vï¿½ltozï¿½ nï¿½v.
      */
     public String giveLoopName(){
         if(!funcs.isEmpty()){
@@ -114,23 +114,23 @@ public class VariableStorage {
         }
     }
     /**
-     * Frissít egy bejegyzést.
-     * @param name A név ami alapján eldöntjük melyik változót frissítjük.
-     * @param value	Az új érték.
+     * Frissï¿½t egy bejegyzï¿½st.
+     * @param name A nï¿½v ami alapjï¿½n eldï¿½ntjï¿½k melyik vï¿½ltozï¿½t frissï¿½tjï¿½k.
+     * @param value	Az ï¿½j ï¿½rtï¿½k.
      */
     public void updateVariable(String name,Double value){
         variables.replace(name,value);
     }
     /**
-     * Minden bejegyzést kitöröl.
+     * Minden bejegyzï¿½st kitï¿½rï¿½l.
      */
     public void clear(){
         variables.clear();
     }
     /**
-     * Beállítja, hogy eljárásban van-e és ha igen akkor melyikbe.
-     * @param inFunc Eljárásban van e?
-     * @param name Az eljárás neve.
+     * Beï¿½llï¿½tja, hogy eljï¿½rï¿½sban van-e ï¿½s ha igen akkor melyikbe.
+     * @param inFunc Eljï¿½rï¿½sban van e?
+     * @param name Az eljï¿½rï¿½s neve.
      */
     public void setInFunc(boolean inFunc, String name) {
         if(inFunc) 
