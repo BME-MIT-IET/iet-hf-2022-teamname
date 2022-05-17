@@ -49,7 +49,7 @@ public class StepDefinitions {
     }
 
     @And("facing {word}")
-    public void facingRight(String direction) {
+    public void facing(String direction) {
         double rotation = faceToRotation.get(direction);
         assertEquals(rotation, poloska.getRotation());
     }
