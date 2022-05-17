@@ -19,14 +19,14 @@ public class FunctionStorage {
 	 * Az eljárásokat tartalmazó tároló. Azért ObservableList mivel így közvetlen be lehet állítani a megjelenítés ListViewének adatának.
 	 */
     private ObservableList<Function> functions = FXCollections.observableArrayList();
-    private static FunctionStorage single_instance =null;
+    private static FunctionStorage singleInstance =null;
     private FunctionStorage(){}
     public static FunctionStorage getInstance()
     {
-        if (single_instance == null) {
-            single_instance = new FunctionStorage();
+        if (singleInstance == null) {
+            singleInstance = new FunctionStorage();
         }
-        return single_instance;
+        return singleInstance;
     }
     /**
      * Hozzáad egy eljárást.
