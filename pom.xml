@@ -25,8 +25,14 @@
     <dependencies>
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java8</artifactId>
+            <artifactId>cucumber-java</artifactId>
             <version>7.0.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.8.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -54,6 +60,12 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-swing</artifactId>
             <version>11-ea+24</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.0.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
