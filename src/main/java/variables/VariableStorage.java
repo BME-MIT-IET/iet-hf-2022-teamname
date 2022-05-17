@@ -75,7 +75,7 @@ public class VariableStorage {
      * @param name A változó neve.
      * @return
      */
-    public double getVariable(String name){
+    public Double getVariable(String name){
         return variables.get(name);
     }
     /**
@@ -126,6 +126,7 @@ public class VariableStorage {
      */
     public void clear(){
         variables.clear();
+        loopNumber=1;
     }
     /**
      * Beállítja, hogy eljárásban van-e és ha igen akkor melyikbe.
@@ -138,8 +139,11 @@ public class VariableStorage {
         	funcs.push(new Func(name,1));
         	
         }else {
-        	funcs.pop();
-        	
+            if(!funcs.isEmpty())
+        	    funcs.pop();
         }
+    }
+    public int getVariableCount(){
+        return variables.size();
     }
 }
