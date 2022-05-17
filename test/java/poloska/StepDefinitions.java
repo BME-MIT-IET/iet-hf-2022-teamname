@@ -1,6 +1,7 @@
 package poloska;
 
 import Poloska.Poloska;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -45,5 +46,11 @@ public class StepDefinitions {
     @Then("y position is {double}")
     public void y_position_is(Double expectedValue) {
         assertEquals(expectedValue,poloska.getY());
+    }
+
+    @And("facing {word}")
+    public void facingRight(String direction) {
+        double rotation = faceToRotation.get(direction);
+        assertEquals(rotation, poloska.getRotation());
     }
 }
