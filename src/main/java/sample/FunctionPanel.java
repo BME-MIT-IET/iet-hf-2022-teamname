@@ -33,7 +33,7 @@ public class FunctionPanel implements Initializable {
      * Hozzáad egy új változót a listához, amennyiben még nincs a listában az adott elem.
      * @param actionEvent
      */
-    public void addVar(ActionEvent actionEvent) {
+    public void addVar() {
         if(!data.contains(varInput.getText()))
             data.add(varInput.getText());
     }
@@ -42,7 +42,7 @@ public class FunctionPanel implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ContextMenu listMenu=new ContextMenu();
         MenuItem del=new MenuItem("Delete");
-        del.setOnAction((event)->data.remove(varList.getSelectionModel().getSelectedItem()));
+        del.setOnAction(event -> data.remove(varList.getSelectionModel().getSelectedItem()));
         listMenu.getItems().add(del);
         varList.setContextMenu(listMenu);
         varList.setItems(data);
@@ -56,7 +56,7 @@ public class FunctionPanel implements Initializable {
      * A végén bezárja az ablakot.
      * @param actionEvent
      */
-    public void saveFunction(ActionEvent actionEvent) {
+    public void saveFunction() {
         FunctionStorage str=FunctionStorage.getInstance();
         Function f=new Function(nameInput.getText(),data,commandsTextArea.getText());
         if(editMode){
