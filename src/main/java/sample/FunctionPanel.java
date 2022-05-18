@@ -60,10 +60,10 @@ public class FunctionPanel implements Initializable {
         FunctionStorage str=FunctionStorage.getInstance();
         Function f=new Function(nameInput.getText(),data,commandsTextArea.getText());
         if(editMode){
-            str.RemoveFunctionByName(f.name);
+            str.removeFunctionByName(f.name);
         }
-       if(!str.HasFunction(f.name)){
-           str.AddFunction(f);
+       if(!str.hasFunction(f.name)){
+           str.addFunction(f);
        }
 
         Stage stage =(Stage)okButton.getScene().getWindow();

@@ -68,7 +68,7 @@ public class FunctionCellController extends ListCell<Function> {
             @Override
             public void handle(ActionEvent actionEvent) {
                 FunctionStorage str=FunctionStorage.getInstance();
-                str.RemoveFunction(getItem());
+                str.removeFunction(getItem());
 
             }
         });

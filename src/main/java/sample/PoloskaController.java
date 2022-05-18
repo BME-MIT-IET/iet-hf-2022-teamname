@@ -137,7 +137,7 @@ public class PoloskaController implements Initializable {
         fileChooser.getExtensionFilters().clear();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON files (*.json)","*.json"));
         File selected=fileChooser.showSaveDialog(content.getScene().getWindow());
-        FunctionStorage.getInstance().Save(selected.getAbsolutePath());
+        FunctionStorage.getInstance().save(selected.getAbsolutePath());
     }
 
     /**

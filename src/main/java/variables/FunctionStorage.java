@@ -32,22 +32,22 @@ public class FunctionStorage {
      * Hozzáad egy eljárást.
      * @param f Az adott eljárás.
      */
-    public void AddFunction(Function f){
-    	if(!this.HasFunction(f.name))
+    public void addFunction(Function f){
+    	if(!this.hasFunction(f.name))
     		functions.add(f);
     }
     /**
      * Eltávolít egy eljárást Objekt alapján.
      * @param f Az eltávolítandó eljárás.
      */
-    public void RemoveFunction(Function f) {
+    public void removeFunction(Function f) {
         functions.remove(f);
     }
     /**
      * Eltávolít egy eljárást név alapján.
      * @param name Az eltávolítandó elem neve.
      */
-    public void RemoveFunctionByName(String name) {
+    public void removeFunctionByName(String name) {
         functions.removeIf(f -> f.name.equals(name));
     }
     /**
@@ -62,9 +62,9 @@ public class FunctionStorage {
      * @param name A keresett eljárás neve.
      * @return Az eljárás.
      */
-   public Function GetFunction(String name){
+   public Function getFunction(String name){
         for (Function f:functions){
-            if(f.name.toLowerCase().equals(name.toLowerCase())){
+            if(f.name.equalsIgnoreCase(name)){
                 return f;
             }
         }
@@ -75,9 +75,9 @@ public class FunctionStorage {
     * @param name A név amivel keresünk.
     * @return
     */
-    public boolean HasFunction(String name){
+    public boolean hasFunction(String name){
         for (Function f:functions){
-            if(f.name.toLowerCase().equals(name.toLowerCase())){
+            if(f.name.equalsIgnoreCase(name)){
                 return true;
             }
         }
@@ -90,26 +90,30 @@ public class FunctionStorage {
      * @param file A fájl helye ahova mentjük.
      * @throws IOException Ha nem valós helyet kapunk.
      */
-    public void Save(String file)throws IOException {
+    public void save(String file)throws IOException {
         Gson gson=new Gson();
-        FileWriter writer =new FileWriter(file);
-        writer.write(gson.toJson(functions));
-        writer.flush();
-        writer.close();
+        FileWriter writer = null;
+        try {
+	        writer =new FileWriter(file);
+	        writer.write(gson.toJson(functions));
+	        writer.flush();
+        } finally {
+        	writer.close();
+        }
     }
     /**
      * Betölti az összes eljárást a kapott json fájlból. Ha már van azzal a névvel egy elem akkor azt kihagyja.
      * @param file A fájl helye ahonnan beolvassuk.
      * @throws IOException
      */
-    public void Load(String file)throws IOException {
+    public void load(String file)throws IOException {
         Gson gson=new Gson();
         BufferedReader reader =new BufferedReader(new FileReader(file));
         Type listType = new TypeToken<ArrayList<Function>>(){}.getType();
         List<Function> temp = new ArrayList<>(gson.fromJson(reader, listType));
 
         for(Function f: temp){
-            if(!HasFunction(f.name)){
+            if(!hasFunction(f.name)){
                 functions.add(f);
             }
         }

@@ -60,6 +60,6 @@ public class FunctionList implements Initializable {
         FileChooser fileChooser=new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON files (*.json)","*.json"));
         File selectedFile =fileChooser.showOpenDialog(addNew.getScene().getWindow());
-        FunctionStorage.getInstance().Load(selectedFile.getAbsolutePath());
+        FunctionStorage.getInstance().load(selectedFile.getAbsolutePath());
     }
 }
