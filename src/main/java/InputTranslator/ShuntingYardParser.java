@@ -55,7 +55,7 @@ public class ShuntingYardParser {
      * @param stack 	Az operandStack
      * @param operator	Az adott mûveletet beazonostó karakter.
      */
-    private void addNode(Stack<ASTNode> stack, char operator) {
+    private void addNode(Deque<ASTNode> stack, char operator) {
          ASTNode rightASTNode = stack.pop();
          ASTNode leftASTNode = stack.pop();
         switch(operator){
@@ -74,6 +74,8 @@ public class ShuntingYardParser {
             case'^':
                 stack.push(new PowerNode(String.valueOf(operator), leftASTNode, rightASTNode));
                 break;
+            default:
+            	break;
         }
 
     }
@@ -95,8 +97,8 @@ public class ShuntingYardParser {
      * @throws InputErrorException Ha a bejövõ tokenekbõl nem értelmezhetõ számként.
      */
     public ASTNode convertTokenToAST(List<Token> tokens) throws InputErrorException {
-        Stack<Character> operatorStack = new Stack<>();
-        Stack<ASTNode> operandStack =new Stack<>();
+        Deque<Character> operatorStack = new ArrayDeque<>();
+        Deque<ASTNode> operandStack =new ArrayDeque<>();
 
         main:
             for(Token t: tokens){
