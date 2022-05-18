@@ -82,7 +82,7 @@ public class PoloskaController implements Initializable {
                 ArrayList<Command> cmds = parser.parse((new Tokenizer(cmdInput.getText())).getTokens());
                 Iterator<Command> it = cmds.iterator();
                 while (it.hasNext()) {
-                    Command c = (Command) it.next();
+                    Command c = it.next();
                     c.execute(p);
                 }
                 cmdOutput.appendText(cmdInput.getText()+"\n");
@@ -100,21 +100,16 @@ public class PoloskaController implements Initializable {
             pos=-1;
             cmdInput.setText("");
         }
-        if(keyEvent.getCode()==KeyCode.DOWN){
-        	if(pos+1<prevCommands.size()) {
+        if(keyEvent.getCode()==KeyCode.DOWN && pos+1<prevCommands.size()){
             pos++;
             cmdInput.setText(prevCommands.get(pos));
-        	}
 
         }
-        if(keyEvent.getCode()==KeyCode.UP){
-        	if(pos>0) {
+        if(keyEvent.getCode()==KeyCode.UP && pos>0){
         		pos--;
                 cmdInput.setText(prevCommands.get(pos));
-        	}
-        
-    }
-}
+	    }
+	}
     /**
      * Megynitja azt az ablakot ahol az elj�r�sokat menedzselhetj�k.
      * @param actionEvent	akci�
@@ -138,7 +133,7 @@ public class PoloskaController implements Initializable {
      * @param actionEvent
      * @throws IOException
      */
-    public void ExportFunctions(ActionEvent actionEvent) throws IOException{
+    public void ExportFunctions() throws IOException{
         fileChooser.getExtensionFilters().clear();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON files (*.json)","*.json"));
         File selected=fileChooser.showSaveDialog(content.getScene().getWindow());
@@ -149,7 +144,7 @@ public class PoloskaController implements Initializable {
      * Elmenti a rajzfel�letet egy .png k�pf�jlba.
      * @param actionEvent
      */
-    public void saveCanvas(ActionEvent actionEvent) {
+    public void saveCanvas() {
         fileChooser.getExtensionFilters().clear();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG files (*.png)","*.png"));
         File selected=fileChooser.showSaveDialog(content.getScene().getWindow());
@@ -165,7 +160,7 @@ public class PoloskaController implements Initializable {
      * Egy felugr� ablak megjelenik a programr�l n�h�ny inform�ci�val.
      * @param actionEvent
      */
-    public void aboutClicked(ActionEvent actionEvent) {
+    public void aboutClicked() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
         alert.setHeaderText("About this program");
@@ -177,7 +172,7 @@ public class PoloskaController implements Initializable {
      * Egy �j rajz k�sz�t�s�t kezdi. A k�pet megjelen�ti �s elforgatja, a rajzfel�letet alaphelyzetbe �ll�tja.
      * @param actionEvent
      */
-    public void newDrawing(ActionEvent actionEvent) {
+    public void newDrawing() {
         imagePoloska.setVisible(true);
         p.resetCanvas();
         rotateImage();
@@ -197,7 +192,7 @@ public class PoloskaController implements Initializable {
         imagePoloska.getTransforms().add(rotation);
     }
     /**Bez�r�dik a program */
-    public void exitClicked(ActionEvent actionEvent) {
+    public void exitClicked() {
         Platform.exit();
     }
 }
