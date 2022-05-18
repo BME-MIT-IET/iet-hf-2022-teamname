@@ -56,7 +56,7 @@ public class FunctionList implements Initializable {
      * @param actionEvent
      * @throws IOException
      */
-    public void importFunctions(ActionEvent actionEvent) throws IOException{
+    public void importFunctions() throws IOException{
         FileChooser fileChooser=new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON files (*.json)","*.json"));
         File selectedFile =fileChooser.showOpenDialog(addNew.getScene().getWindow());
