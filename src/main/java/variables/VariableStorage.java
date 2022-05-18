@@ -1,5 +1,7 @@
 package variables;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -26,11 +28,11 @@ class Func{
 	}
 }
 public class VariableStorage {
-    private static VariableStorage single_instance =null;
+    private static VariableStorage singleInstance =null;
     /**
      * A program v�ltoz�i tartalmaz� Map, melyben String �s Double �rt�kp�rokat t�rolok, ahol a Sztring a v�ltoz� neve a Double pedig a v�ltoz� �rt�ke.
      */
-    private Map<String,Double> variables=new HashMap<String,Double>();
+    private Map<String,Double> variables=new HashMap<>();
     /**
      * A v�ltoz� azt a sz�mot t�rolja ami a k�vetlez� ciklus v�ltoz�nak a sz�m r�sz�t fogja kiadni.
      */
@@ -38,7 +40,7 @@ public class VariableStorage {
     /**
      * Sz�mon tartja, hogy �ppen melyik elj�r�sban vagyunk �s azon bel�l hanyadik ciklusn�l j�runk. A ciklusv�ltoz� helyes elnevez�s�n�l fontos.
      */
-    private Stack<Func> funcs=new Stack<>();
+    private Deque<Func> funcs=new ArrayDeque<>();
     /**
      * Azt jel�li, hogy a program az el�r�s pillanat�ban elj�r�shoz tartoz� utas�t�st hajt-e v�gre.
      */
@@ -49,10 +51,10 @@ public class VariableStorage {
     private VariableStorage(){}
     public static VariableStorage getInstance()
     {
-        if (single_instance == null) {
-            single_instance = new VariableStorage();
+        if (singleInstance == null) {
+            singleInstance = new VariableStorage();
         }
-        return single_instance;
+        return singleInstance;
     }
     /**Hozz�ad egy v�ltoz�t a Map-be.
      * 
