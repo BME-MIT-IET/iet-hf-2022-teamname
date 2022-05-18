@@ -17,9 +17,10 @@ public class FillExpression implements Command{
         pixelWriter.setColor(x,y,col);
 
 
-        if(pixelReader.getColor(x,y).getBlue()>200 &&pixelReader.getColor(x,y).getRed()>200&&pixelReader.getColor(x,y).getBlue()>200){
+   /*   if(pixelReader.getColor(x,y).getBlue()>200 &&pixelReader.getColor(x,y).getRed()>200&&pixelReader.getColor(x,y).getBlue()>200){
 
         }
+  */
 
     }
     @Override
