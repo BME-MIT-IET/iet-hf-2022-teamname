@@ -18,38 +18,47 @@ public class NoSelectionModel<T> extends MultipleSelectionModel<T> {
 
     @Override
     public void selectIndices(int index, int... indices) {
+    	//Intentionally blank override
     }
 
     @Override
     public void selectAll() {
+    	//Intentionally blank override
     }
 
     @Override
     public void selectFirst() {
+    	//Intentionally blank override
     }
 
     @Override
     public void selectLast() {
+    	//Intentionally blank override
     }
 
     @Override
     public void clearAndSelect(int index) {
+    	//Intentionally blank override
     }
 
     @Override
     public void select(int index) {
+    	//Intentionally blank override
     }
 
     @Override
     public void select(T obj) {
+    	//Intentionally blank override
     }
 
     @Override
     public void clearSelection(int index) {
+    	//Intentionally blank override
     }
 
     @Override
     public void clearSelection() {
+    	//Intentionally blank override
     }
 
     @Override
@@ -64,9 +73,11 @@ public class NoSelectionModel<T> extends MultipleSelectionModel<T> {
 
     @Override
     public void selectPrevious() {
+    	//Intentionally blank override
     }
 
     @Override
     public void selectNext() {
+    	//Intentionally blank override
     }
 }
