@@ -34,7 +34,7 @@ public class FunctionList implements Initializable {
         functionList.setItems(FunctionStorage.getInstance().getList());
         functionList.setFocusTraversable(false);
         functionList.setStyle("-fx-control-inner-background-alt: -fx-control-inner-background ;");
-        functionList.setCellFactory((Callback<ListView<Function>, ListCell<Function>>) functionListView -> new FunctionCellController(this));
+        functionList.setCellFactory((Callback<ListView<Function>, ListCell<Function>>) functionListView -> new FunctionCellController());
 
     }
     /**
