@@ -25,7 +25,19 @@ public class Token {
     }
     @Override
     public boolean equals(Object o) {
+    	
+    	if (o == null)
+    	    return false;
+
+    	  if (this.getClass() != o.getClass())
+    	    return false;
+    	
     	Token t=(Token)o;
     	return type==t.getType()&& value.equals(t.getValue());
+    }
+    
+    @Override
+    public int hashCode() {
+    	return 96;
     }
 }

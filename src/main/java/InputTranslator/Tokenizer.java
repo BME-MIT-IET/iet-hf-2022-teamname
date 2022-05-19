@@ -3,6 +3,8 @@ package InputTranslator;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import java.util.ArrayList;
+import java.util.List;
+
 import Exception.InputErrorException;
 public class Tokenizer {
     private int params;
@@ -26,7 +28,7 @@ public class Tokenizer {
      * Az iterátor pozíciója után közvetlen számot keres. (double)
      * @return num Szöveges formában a megtalált szám.
      */
-    private String FindNum(){
+    private String findNum(){
         StringBuilder num=new StringBuilder();
         while(Character.isDigit(it.current())|| it.current()=='.'){
             num.append(it.current());
@@ -38,7 +40,7 @@ public class Tokenizer {
      * Az iterátor pozíciója után közvetlenül szót keres. Csak betûket tartalmazhat. 
      * @return word Szöveges formában a megtalált szó.
      */
-    private String FindWord(){
+    private String findWord(){
         StringBuilder word=new StringBuilder();
         while(Character.isLetter(it.current())){
             word.append(it.current());
@@ -50,7 +52,7 @@ public class Tokenizer {
      * Az iterátor pozíciója után közvetlenül szót keres. Tartalmazhat betûket, számokat és '_' karaktert.
      * @return word Szöveges formában a megtalált szó.
      */
-    private String FindVariableName(){
+    private String findVariableName(){
         StringBuilder word=new StringBuilder();
         while(Character.isLetter(it.current())||Character.isDigit(it.current())|| it.current()=='_'){
             word.append(it.current());
@@ -63,7 +65,7 @@ public class Tokenizer {
      * Eléri a sztringbõl kiszûrt tokeneket.
      * @return A sztring tokenekre lebontott alakja.
      */
-    public ArrayList<Token> getTokens(){
+    public List<Token> getTokens(){
         return tokens;
     }
 
@@ -76,10 +78,10 @@ public class Tokenizer {
         while(it.current()!= CharacterIterator.DONE){
             if(" \n\t".indexOf(it.current())!=-1){it.next();}
             else if(Character.isDigit(it.current())){
-                tokens.add(new Token(TokenTypes.NUMBER,FindNum()));
+                tokens.add(new Token(TokenTypes.NUMBER,findNum()));
             }
             else if(Character.isAlphabetic(it.current())){
-                tokens.add(new Token(TokenTypes.STRING,FindWord()));
+                tokens.add(new Token(TokenTypes.STRING,findWord()));
             }
             else if("+*-/^".indexOf(it.current())!=-1){
                 tokens.add(new Token(TokenTypes.OPERATOR,String.valueOf(it.current())));
@@ -94,11 +96,11 @@ public class Tokenizer {
             else if(it.current()=='@'){ tokens.add(new Token(TokenTypes.RANDOM,"")); it.next();}
             else if(it.current()=='#'){
                 it.next();
-                tokens.add(new Token(TokenTypes.HEX,FindVariableName()));
+                tokens.add(new Token(TokenTypes.HEX,findVariableName()));
             }
             else if(it.current()=='$'){
                 it.next();
-                tokens.add(new Token(TokenTypes.VARIABLE,FindVariableName()));
+                tokens.add(new Token(TokenTypes.VARIABLE,findVariableName()));
             }
             else{
                 throw new InputErrorException("Invalid character: "+it.current()+" at: "+it.getIndex());

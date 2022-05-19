@@ -41,7 +41,7 @@ public class Parser {
             case "pd":
                 return new PenDown();
             default:
-                if(FunctionStorage.getInstance().HasFunction(id)){
+                if(FunctionStorage.getInstance().hasFunction(id)){
                     return new FunctionExpression(id,tokens);
                 }
                 throw new InputErrorException("No such command: "+id);
