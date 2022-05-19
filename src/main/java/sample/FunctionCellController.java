@@ -78,7 +78,7 @@ public class FunctionCellController extends ListCell<Function> {
             public void handle(ActionEvent actionEvent) {
                 try{
                     Stage stage=new Stage();
-                    FXMLLoader loader =new FXMLLoader(getClass().getResource("../../resources/functionPanel.fxml"));
+                    FXMLLoader loader =new FXMLLoader(getClass().getResource("/functionPanel.fxml"));
                     Parent root = (Parent)loader.load();
                     FunctionPanel controller = loader.getController();
                     controller.nameInput.setText(getItem().name);
@@ -89,7 +89,7 @@ public class FunctionCellController extends ListCell<Function> {
                     controller.setEditMode(true);
                     stage.setTitle("Magic Poloska");
                     stage.setScene(new Scene(root, 600, 300));
-                    stage.getIcons().add(new Image("src/main/resources/images/premiumboi.png"));
+                    stage.getIcons().add(new Image("/images/premiumboi.png"));
                     stage.show();
                 }catch(IOException e){
                     e.printStackTrace();

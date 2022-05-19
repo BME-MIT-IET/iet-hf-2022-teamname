@@ -5,21 +5,21 @@ import Nodes.*;
 import java.util.*;
 import Exception.InputErrorException;
 class Operator {
-	/**Az adott oper·tor jobb vagy bal oldali asszociativit·s˙.*/
+	/**Az adott oper√°tor jobb vagy bal oldali asszociativit√°s√∫.*/
     private boolean rightAssociative;
-    /**KiÈrtÈkelÈsi sorrend ez alapj·n van eldˆntve. */
+    /**Ki√©rt√©kel√©si sorrend ez alapj√°n van eld√∂ntve. */
     private int precedence;
-    /**Az adott szimbÛlum ami reprezent·lja.*/
+    /**Az adott szimb√≥lum ami reprezent√°lja.*/
     private char symbol;
     Operator(char symbol, boolean rightAssociative, int precedence){
         this.symbol=symbol;
         this.precedence=precedence;
         this.rightAssociative=rightAssociative;
     }
-    /**÷sszehasonlÌt 2 oper·tort a kiÈrtÈkelÈsi priorit·suk alapj·n.
+    /**√ñsszehasonl√≠t 2 oper√°tort a ki√©rt√©kel√©si priorit√°suk alapj√°n.
      * 
-     * @param other A m·sik oper·tor.
-     * @return	Ha egyenlıek akkor 0, ha az other precedenci·ja kissebb akkor 0-n·l nagyobb, ha nagyobb akkor meg 0-n·l nagyobb sz·mot ad.
+     * @param other A m√°sik oper√°tor.
+     * @return	Ha egyenl√µek akkor 0, ha az other precedenci√°ja kissebb akkor 0-n√°l nagyobb, ha nagyobb akkor meg 0-n√°l nagyobb sz√°mot ad.
      */
     public int comparePrecedence(Operator other){
         return Integer.compare(precedence, other.precedence);
@@ -35,11 +35,11 @@ class Operator {
 
 public class ShuntingYardParser {
 	/**
-	 * Azon oper·torok amiket az alhoritmus felismer.
+	 * Azon oper√°torok amiket az alhoritmus felismer.
 	 */
     private Map<Character, Operator> operators;
     /**
-     * Feltˆlti az oper·tor t·bl·t a megfelelı elemekkkel.
+     * Felt√∂lti az oper√°tor t√°bl√°t a megfelel√µ elemekkkel.
      */
     public ShuntingYardParser(){
         this.operators=new HashMap<>();
@@ -47,16 +47,21 @@ public class ShuntingYardParser {
         operators.put('-',new Operator('-',false,2));
         operators.put('*',new Operator('*',false,3));
         operators.put('/',new Operator('+',false,3));
-        operators.put('^',new Operator('+',true,4));
+        operators.put('^',new Operator('^',true,4));
     }
-    /**Az operand stack tetejÈre r·tol egy ˙j m˚velet Nodeot, melynek be·llÌtja a jobb Ès bal oldali szomszÈd Node-j·t
-     * az operadn stack 1. Ès 2 elemÈre.
+    /**Az operand stack tetej√©re r√°tol egy √∫j m√ªvelet Nodeot, melynek be√°ll√≠tja a jobb √©s bal oldali szomsz√©d Node-j√°t
+     * az operadn stack 1. √©s 2 elem√©re.
      * 
      * @param stack 	Az operandStack
-     * @param operator	Az adott m˚veletet beazonostÛ karakter.
+     * @param operator	Az adott m√ªveletet beazonost√≥ karakter.
      */
-    private void addNode(Deque<ASTNode> stack, char operator) {
+
+    private void addNode(Stack<ASTNode> stack, char operator) throws InputErrorException {
+        if(stack.isEmpty())
+            throw new InputErrorException("Number missing!");
          ASTNode rightASTNode = stack.pop();
+        if(stack.isEmpty())
+            throw new InputErrorException("Number missing!");
          ASTNode leftASTNode = stack.pop();
         switch(operator){
             case'+':
@@ -79,22 +84,22 @@ public class ShuntingYardParser {
         }
 
     }
-    /**A bejˆvı tokeneket ·talakÌtja egy AST-re a Shunting Yard Algoritmus alapj·n.
+    /**A bej√∂v√µ tokeneket √°talak√≠tja egy AST-re a Shunting Yard Algoritmus alapj√°n.
      * https://en.wikipedia.org/wiki/Shunting-yard_algorithm
-     * A tokeneket egyesÈvel olvassa be, Ès a tÌpusa alapj·n dˆnti el a megfelelı m˚veletet.
-     * Az algoritmus fı m˚kˆdÈsi alapja 2 stack: az operandStack, Ès az operatorStack.
-     * Az operandStackre ker¸lnek maga az elkÈszÌtett AST Nodeok. Az operatorStack pedig ideiglenesen t·rolja a beÈrkezı m˚veleteket.
+     * A tokeneket egyes√©vel olvassa be, √©s a t√≠pusa alapj√°n d√∂nti el a megfelel√µ m√ªveletet.
+     * Az algoritmus f√µ m√ªk√∂d√©si alapja 2 stack: az operandStack, √©s az operatorStack.
+     * Az operandStackre ker√ºlnek maga az elk√©sz√≠tett AST Nodeok. Az operatorStack pedig ideiglenesen t√°rolja a be√©rkez√µ m√ªveleteket.
      * 
-     * Ha sz·mot, @(random sz·m), vagy egy $v·ltozÛt kap akkor azt rˆgtˆn belerakja az operandStackbe null szomszÈdokkal.
-     * Ha operatort tal·l, akkor megnÈzi, hogy az operatorStack tetejÈn milyen oper·tor van Ès amÌg annak nagyobb a precedenci·ja(vagy ugyanakkora Ès token bal asszociativit·s˙) 
-     * addig onnan veszi a m˚veleteket Ès azokat adja, hozz· az operandStackre AddNode()-al. Azt·n a tokent r·rakja az operator stackre.
-     * Ha (-t tal·l akkor akkor azt szimpl·n r·tolja az operatorStackre.
-     * Ha )-t tal·l akkor egÈszen addig amÌg nem tal·l (-t addig az ˆsszes oper·tort az operandStackrıl r·tolja a kimenetre.
-     * HA elfogyott a beolvasni valÛ tokenek, de mÈg maradt az operatorStackbe m˚velet akkor azokat is hozz·adja a kimenetre addNode()-al.
+     * Ha sz√°mot, @(random sz√°m), vagy egy $v√°ltoz√≥t kap akkor azt r√∂gt√∂n belerakja az operandStackbe null szomsz√©dokkal.
+     * Ha operatort tal√°l, akkor megn√©zi, hogy az operatorStack tetej√©n milyen oper√°tor van √©s am√≠g annak nagyobb a precedenci√°ja(vagy ugyanakkora √©s token bal asszociativit√°s√∫) 
+     * addig onnan veszi a m√ªveleteket √©s azokat adja, hozz√° az operandStackre AddNode()-al. Azt√°n a tokent r√°rakja az operator stackre.
+     * Ha (-t tal√°l akkor akkor azt szimpl√°n r√°tolja az operatorStackre.
+     * Ha )-t tal√°l akkor eg√©szen addig am√≠g nem tal√°l (-t addig az √∂sszes oper√°tort az operandStackr√µl r√°tolja a kimenetre.
+     * HA elfogyott a beolvasni val√≥ tokenek, de m√©g maradt az operatorStackbe m√ªvelet akkor azokat is hozz√°adja a kimenetre addNode()-al.
      * 
-     * @param tokens A bejˆvı tokenek, ami a m˚veleteket tartalmazza.
-     * @return	A kre·lt AST gyˆkÈr nodeja.
-     * @throws InputErrorException Ha a bejˆvı tokenekbıl nem Èrtelmezhetı sz·mkÈnt.
+     * @param tokens A bej√∂v√µ tokenek, ami a m√ªveleteket tartalmazza.
+     * @return	A kre√°lt AST gy√∂k√©r nodeja.
+     * @throws InputErrorException Ha a bej√∂v√µ tokenekb√µl nem √©rtelmezhet√µ sz√°mk√©nt.
      */
     public ASTNode convertTokenToAST(List<Token> tokens) throws InputErrorException {
         Deque<Character> operatorStack = new ArrayDeque<>();

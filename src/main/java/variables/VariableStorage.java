@@ -77,7 +77,7 @@ public class VariableStorage {
      * @param name A v�ltoz� neve.
      * @return
      */
-    public double getVariable(String name){
+    public Double getVariable(String name){
         return variables.get(name);
     }
     /**
@@ -128,6 +128,7 @@ public class VariableStorage {
      */
     public void clear(){
         variables.clear();
+        loopNumber=1;
     }
     /**
      * Be�ll�tja, hogy elj�r�sban van-e �s ha igen akkor melyikbe.
@@ -140,8 +141,11 @@ public class VariableStorage {
         	funcs.push(new Func(name,1));
         	
         }else {
-        	funcs.pop();
-        	
+            if(!funcs.isEmpty())
+        	    funcs.pop();
         }
+    }
+    public int getVariableCount(){
+        return variables.size();
     }
 }
