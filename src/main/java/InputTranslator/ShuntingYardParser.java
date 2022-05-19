@@ -56,7 +56,7 @@ public class ShuntingYardParser {
      * @param operator	Az adott mûveletet beazonostó karakter.
      */
 
-    private void addNode(Stack<ASTNode> stack, char operator) throws InputErrorException {
+    private void addNode(Deque<ASTNode> stack, char operator) throws InputErrorException {
         if(stack.isEmpty())
             throw new InputErrorException("Number missing!");
          ASTNode rightASTNode = stack.pop();
