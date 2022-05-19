@@ -1,6 +1,6 @@
 # SonarCloud statikus tesztek elvégzése
 
-## Elévgzett munka
+## Elvégzett munka
 A SonarCloud eszköz segitségével rengeteg codesmellt és néhány bugot felderithettünk a programban.
 
 Gyakori hibák a nem használt paraméterek, változók kódrészletek. Ezek fejlesztés során könnyen bent maradhatnak a kódban, a SoanrCloud
