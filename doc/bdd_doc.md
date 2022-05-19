@@ -18,6 +18,6 @@ A program többi részére nehézkesen lehetett volna ezt a fajta tesztelési ko
 
 A feladat lezárása volt megvalósítani, hogy a Maven build-el együtt lefutathatóak legyenek.
 
-#Tanulságok
+## Tanulságok
 
 A feladat megoldása során, megtanulatam milyen fajta működéseket lehet BDD tesztekkel ellenőrizni, valamint különböző konvenciókat melyek segítségével könnyen értelmezhető szenárió leírásokat készíthetünk. Valamint lehetőségem volt a tesztek futtatásával validálni a működést. ezek után már magabiztosan tudom használni a Cucumber könyvtárat BDD tesztek megvalósítására.
