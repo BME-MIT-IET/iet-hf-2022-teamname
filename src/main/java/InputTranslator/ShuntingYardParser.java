@@ -47,7 +47,7 @@ public class ShuntingYardParser {
         operators.put('-',new Operator('-',false,2));
         operators.put('*',new Operator('*',false,3));
         operators.put('/',new Operator('+',false,3));
-        operators.put('^',new Operator('+',true,4));
+        operators.put('^',new Operator('^',true,4));
     }
     /**Az operand stack tetejére rátol egy új mûvelet Nodeot, melynek beállítja a jobb és bal oldali szomszéd Node-ját
      * az operadn stack 1. és 2 elemére.
@@ -55,8 +55,12 @@ public class ShuntingYardParser {
      * @param stack 	Az operandStack
      * @param operator	Az adott mûveletet beazonostó karakter.
      */
-    private void addNode(Stack<ASTNode> stack, char operator) {
+    private void addNode(Stack<ASTNode> stack, char operator) throws InputErrorException {
+        if(stack.isEmpty())
+            throw new InputErrorException("Number missing!");
          ASTNode rightASTNode = stack.pop();
+        if(stack.isEmpty())
+            throw new InputErrorException("Number missing!");
          ASTNode leftASTNode = stack.pop();
         switch(operator){
             case'+':

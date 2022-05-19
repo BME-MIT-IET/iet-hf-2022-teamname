@@ -14,15 +14,6 @@
     </properties>
 
     <build>
-        <testResources>
-            <testResource>
-                <directory>${project.basedir}/test/resources/poloska</directory>
-            </testResource>
-        </testResources>
-
-        <testSourceDirectory>${project.basedir}/test/java</testSourceDirectory>
-        <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
-
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -32,6 +23,8 @@
                     <configuration>
                         <includes>
                             <include>**/CucumberIT*.java</include>
+                            <include>**/*Test.java</include>
+
                         </includes>
                     </configuration>
                 </plugin>
@@ -77,7 +70,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.8.1</version>
+            <version>5.7.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
