@@ -57,7 +57,7 @@ public class FunctionExpression implements Command{
 	 */
     public FunctionExpression(String name,List<Token> tokens) throws InputErrorException {
         FunctionStorage funcStr =FunctionStorage.getInstance();
-        func=funcStr.GetFunction(name);
+        func=funcStr.getFunction(name);
         Parser p=new Parser();
         cmds=p.parse(new Tokenizer(func.commandStr).getTokens());
 

@@ -23,7 +23,7 @@ public class LoopExpression implements Command{
     /**
      * Változó tároló.
      */
-    VariableStorage var=VariableStorage.getInstance();
+    VariableStorage variable=VariableStorage.getInstance();
     /**
      * Az a név amivel a cikluson belül eltudjuk érni, hogy épp hanyadik futtatás van folyamatban.
      */
@@ -61,19 +61,19 @@ public class LoopExpression implements Command{
      */
     @Override
     public void execute(Poloska p) throws InputErrorException{
-        variableName=var.giveLoopName();
-        var.addVariable(variableName,0.0,true);
+        variableName=variable.giveLoopName();
+        variable.addVariable(variableName,0.0,true);
         double num=number.evaluate();
         if(num<0){
             throw new InputErrorException("Negativ number in loop");
         }
         for (int i = 0; i < num; i++) {
-            var.updateVariable(variableName,(double)i);
+            variable.updateVariable(variableName,(double)i);
             for(Command c: commands){
                 c.execute(p);
             }
-            var.list();
+            variable.list();
         }
-        var.removeVariable(variableName,true);
+        variable.removeVariable(variableName,true);
     }
 }

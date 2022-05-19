@@ -34,7 +34,7 @@ public class FunctionList implements Initializable {
         functionList.setItems(FunctionStorage.getInstance().getList());
         functionList.setFocusTraversable(false);
         functionList.setStyle("-fx-control-inner-background-alt: -fx-control-inner-background ;");
-        functionList.setCellFactory((Callback<ListView<Function>, ListCell<Function>>) functionListView -> new FunctionCellController(this));
+        functionList.setCellFactory((Callback<ListView<Function>, ListCell<Function>>) functionListView -> new FunctionCellController());
 
     }
     /**
@@ -56,10 +56,10 @@ public class FunctionList implements Initializable {
      * @param actionEvent
      * @throws IOException
      */
-    public void importFunctions(ActionEvent actionEvent) throws IOException{
+    public void importFunctions() throws IOException{
         FileChooser fileChooser=new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON files (*.json)","*.json"));
         File selectedFile =fileChooser.showOpenDialog(addNew.getScene().getWindow());
-        FunctionStorage.getInstance().Load(selectedFile.getAbsolutePath());
+        FunctionStorage.getInstance().load(selectedFile.getAbsolutePath());
     }
 }

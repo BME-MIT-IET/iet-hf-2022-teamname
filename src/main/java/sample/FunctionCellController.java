@@ -49,7 +49,7 @@ public class FunctionCellController extends ListCell<Function> {
         btn.setOnMouseEntered(e->btn.setStyle("-fx-font-size: 15;-fx-background-color:" +color+ ";"));
         btn.setOnMouseExited(e->btn.setStyle("-fx-font-size: 20;-fx-background-color: darkgray;"));
     }
-    public FunctionCellController(FunctionList cnt){
+    public FunctionCellController(){
         name.setStyle("-fx-font-weight: bold;-fx-font-size: 15pt;");
         setUpButton(btnDel,"#a83246");
         setUpButton(btnEdit,"#32a8a2");
@@ -68,7 +68,7 @@ public class FunctionCellController extends ListCell<Function> {
             @Override
             public void handle(ActionEvent actionEvent) {
                 FunctionStorage str=FunctionStorage.getInstance();
-                str.RemoveFunction(getItem());
+                str.removeFunction(getItem());
 
             }
         });
